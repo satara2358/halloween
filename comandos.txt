@@ -1,0 +1,3 @@
+-> npm create astro@latest
+-> desde || https://astro.cloudinary.dev/installation
+-> npm install astro-cloudinary
