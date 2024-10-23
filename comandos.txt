@@ -1,3 +1,6 @@
 -> npm create astro@latest
 -> desde || https://astro.cloudinary.dev/installation
 -> npm install astro-cloudinary
+-> desde || https://console.cloudinary.com/settings/c-85de981fe4a6a6698d257da6f4e487/api-keys
+  uploadPreset: cld-demo-upload
+  

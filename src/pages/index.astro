@@ -1,17 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { CldUploadWidget } from 'astro-cloudinary';
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
-
+		<CldUploadWidget uploadPreset='demo-halloween'>
+			<button>Upload</button>
+		</CldUploadWidget>
 	</main>
 </Layout>
 
 <style>
+	main {
+		width: 800px;
+		margin: 0 auto;
+		padding-top: 100px;
+	}
 
 </style>
 
 <script>
-	
+
 </script>
