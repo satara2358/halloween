@@ -1,25 +1,51 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { CldUploadWidget } from 'astro-cloudinary';
+import Layout from "../layouts/Layout.astro";
+import { CldUploadWidget } from "astro-cloudinary";
+import Heading from "fulldev-ui/components/Heading.astro";
+import Button from "fulldev-ui/components/Button.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		<CldUploadWidget uploadPreset='demo-halloween'>
-			<button>Upload</button>
-		</CldUploadWidget>
-	</main>
+  <main>
+    <Heading color="brand" contrast={false}> Welcome to Astro </Heading>
+    <CldUploadWidget
+			id="upload-widget"
+      uploadPreset="demo-halloween"
+      options={{
+        sources: ["local"],
+        multiple: false,
+        maxFiles: 1,
+        language: "es",
+      }}
+    >
+      <Button color="brand" as="button">Upload</Button>
+    </CldUploadWidget>
+  </main>
 </Layout>
 
-<style>
-	main {
-		width: 800px;
-		margin: 0 auto;
-		padding-top: 100px;
+<script>
+	import { navigate } from 'astro:transitions/client';
+
+	const widget = document.getElementById("upload-widget")
+
+	if(widget){
+		widget.addEventListener('clduploadwidget:success', ((e: CustomEvent<{ info: {public_id: string}}>) => {
+			const publicId = e.detail.info.public_id;
+
+			navigate(`/photo?id=${publicId}`)
+			// console.log('clduploadwidget:success', e.detail);
+		}) as EventListener)
 	}
 
+</script>
+
+<style>
+  main {
+    width: 800px;
+    margin: 0 auto;
+    padding-top: 100px;
+    text-align: center;
+  }
 </style>
 
-<script>
-
-</script>
+<script></script>

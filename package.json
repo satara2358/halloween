@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.9.4",
     "astro": "^4.16.7",
     "astro-cloudinary": "^1.1.2",
+    "fulldev-ui": "^0.4.30",
     "typescript": "^5.6.3"
   }
 }

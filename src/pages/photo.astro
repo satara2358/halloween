@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCldImageUrl } from "astro-cloudinary/helpers";
+import Heading from "fulldev-ui/components/Heading.astro";
+import Button from "fulldev-ui/components/Button.astro";
+
+const { searchParams } = Astro.url;
+const id = searchParams.get("id");
+
+if(id === null){
+	return Astro.redirect("/");
+}
+
+const url = getCldImageUrl({ src:id})
+console.log(id, url);
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<img src={url} alt="Photo"/>
+    <small>{url}</small>
+	</main>
+</Layout>
+
+<!-- http://localhost:4321/photo?id=nfkuhsrwtl1kkqaova1x -->
+
+<style>
+    main {
+    width: 800px;
+    margin: 0 auto;
+    padding-top: 100px;
+    text-align: center;
+  }
+  img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+</style>
