@@ -16,8 +16,42 @@ console.log(id, url);
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		<img src={url} alt="Photo"/>
+	<main data-id={id}>
+    <header>
+      <Heading color="brand" contrast={false}> Temas </Heading>
+      <Button
+        class="add"
+        data-topic="ghost"
+        icon="fish-bone"
+        as="button"
+        color="brand"
+      >
+        Sotano
+      </Button>
+      <Button
+        class="add"
+        data-topic="dead"
+        icon="biohazard"
+        as="button"
+        color="brand"
+      >
+        Tumbas
+      </Button>
+      <Button
+        class="add"
+        data-topic="evil"
+        icon="skull"
+        as="button"
+        color="brand"
+      >
+        Demonios
+      </Button>
+    </header>
+
+    <two-up>
+      <img id="original" src={url} alt="Photo"/>
+      <img id="preview" src={url} alt="Photo"/>
+    </two-up>
     <small>{url}</small>
 	</main>
 </Layout>
@@ -35,5 +69,42 @@ console.log(id, url);
     max-width: 100%;
     height: auto;
     border-radius: 12px;
+    transition: opacity 0.3s ease-in-out;
   }
 </style>
+
+<script>
+import { getCldImageUrl } from "astro-cloudinary/helpers"
+
+  const id = document.querySelector("main")?.getAttribute("data-id") ?? ''
+  const image = document.getElementById("image") as  HTMLImageElement
+  const buttons = document.querySelectorAll("button")
+
+  const TOPICS: Record<string, string> = {
+    ghost: "historia de fantasmas",
+    dead: "historia de muertos",
+    evil: "historia de diablos",
+    custom: "Por defecto"
+  } as const
+
+  const url = getCldImageUrl({ src:id})
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const topic = button.getAttribute("data-topic")
+      if(topic == null) return
+      // if(image == null) return
+
+      const url = getCldImageUrl({
+        src: id,
+        replaceBackground: TOPICS[topic],
+      })
+
+      image.style.opacity = "3"
+      image.src= url
+      image.onload = () => {
+        image.style.opacity = "1"
+      }
+    }) 
+  })
+</script>

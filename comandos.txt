@@ -5,5 +5,8 @@
   uploadPreset: cld-demo-upload
 -> desde || https://ui.full.dev/overview/installation/
 -> npm i fulldev-ui
+-> desde || https://tablericons.com/icon/fish-bone\
+-> desde || https://github.com/GoogleChromeLabs/two-up
+  npm install --save-dev two-up-element
 -> 
   
