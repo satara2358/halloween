@@ -74,16 +74,17 @@ console.log(id, url);
 </style>
 
 <script>
-import { getCldImageUrl } from "astro-cloudinary/helpers"
+  import { getCldImageUrl } from "astro-cloudinary/helpers"
+  import "two-up-element"
 
   const id = document.querySelector("main")?.getAttribute("data-id") ?? ''
-  const image = document.getElementById("image") as  HTMLImageElement
+  const preview = document.getElementById("preview") as  HTMLImageElement
   const buttons = document.querySelectorAll("button")
 
   const TOPICS: Record<string, string> = {
-    ghost: "historia de fantasmas",
-    dead: "historia de muertos",
-    evil: "historia de diablos",
+    ghost: "generar fantasmas",
+    dead: "generar muertos",
+    evil: "generar diablos",
     custom: "Por defecto"
   } as const
 
@@ -100,10 +101,10 @@ import { getCldImageUrl } from "astro-cloudinary/helpers"
         replaceBackground: TOPICS[topic],
       })
 
-      image.style.opacity = "3"
-      image.src= url
-      image.onload = () => {
-        image.style.opacity = "1"
+      preview.style.opacity = "3"
+      preview.src= url
+      preview.onload = () => {
+        preview.style.opacity = "1"
       }
     }) 
   })

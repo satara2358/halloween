@@ -8,5 +8,5 @@
 -> desde || https://tablericons.com/icon/fish-bone\
 -> desde || https://github.com/GoogleChromeLabs/two-up
   npm install --save-dev two-up-element
--> 
+-> mas ejemplos || https://astro.cloudinary.dev/cldimage/examples
   
