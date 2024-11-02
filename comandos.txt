@@ -1,10 +1,25 @@
 -> npm create astro@latest
+  include samples files
+  typeScript yes
+  Strict
+  i dependencias yes
+  inicializar repositories yes
+    || Eliminar components
+    || de index.astro eliminar main y styles - contenido 
 -> desde || https://astro.cloudinary.dev/installation
--> npm install astro-cloudinary
--> desde || https://console.cloudinary.com/settings/c-85de981fe4a6a6698d257da6f4e487/api-keys
-  uploadPreset: cld-demo-upload
+    npm install astro-cloudinary
+    crear .env y pegar 
+-> configurar Preset para subir archivos desde ajustes || https://console.cloudinary.com/settings/c-85de981fe4a6a6698d257da6f4e487/api-keys
+  uploadPreset:  Add uploadPreset|| poner nombre || Unsigned || nombre a carpeta || save
+  Usar nombre para || uploadPreset="demo-halloween" || en CldUploadWidget
+
 -> desde || https://ui.full.dev/overview/installation/
 -> npm i fulldev-ui
+  || escribir astro.config.mjs
+
+-> construir el index.astro
+
+-> construir el photo.astro
 -> desde || https://tablericons.com/icon/fish-bone\
 -> desde || https://github.com/GoogleChromeLabs/two-up
   npm install --save-dev two-up-element

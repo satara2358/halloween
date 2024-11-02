@@ -9,7 +9,7 @@ import Button from "fulldev-ui/components/Button.astro";
   <main>
     <Heading color="brand" contrast={false}> Welcome to Astro </Heading>
     <CldUploadWidget
-			id="upload-widget"
+      id="upload-widget"
       uploadPreset="demo-halloween"
       options={{
         sources: ["local"],
@@ -24,19 +24,20 @@ import Button from "fulldev-ui/components/Button.astro";
 </Layout>
 
 <script>
-	import { navigate } from 'astro:transitions/client';
+  import { navigate } from "astro:transitions/client";
 
-	const widget = document.getElementById("upload-widget")
+  const widget = document.getElementById("upload-widget");
 
-	if(widget){
-		widget.addEventListener('clduploadwidget:success', ((e: CustomEvent<{ info: {public_id: string}}>) => {
-			const publicId = e.detail.info.public_id;
+  if (widget) {
+    widget.addEventListener("clduploadwidget:success", ((
+      e: CustomEvent<{ info: { public_id: string } }>
+    ) => {
+      // console.log('clduploadwidget:success', e.detail);
+      const publicId = e.detail.info.public_id;
 
-			navigate(`/photo?id=${publicId}`)
-			// console.log('clduploadwidget:success', e.detail);
-		}) as EventListener)
-	}
-
+      navigate(`/photo?id=${publicId}`);
+    }) as EventListener);
+  }
 </script>
 
 <style>
